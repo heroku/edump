@@ -1,0 +1,32 @@
+%% All possible tags - use macros in order to avoid misspelling in the code
+-define(allocated_areas, allocated_areas).
+-define(allocator, allocator).
+-define(atoms, atoms).
+-define(binary, binary).
+-define(debug_proc_dictionary, debug_proc_dictionary).
+-define(ende, 'end').
+-define(erl_crash_dump, erl_crash_dump).
+-define(ets, ets).
+-define(fu, 'fun').
+-define(hash_table, hash_table).
+-define(hidden_node, hidden_node).
+-define(index_table, index_table).
+-define(instr_data, instr_data).
+-define(internal_ets, internal_ets).
+-define(loaded_modules, loaded_modules).
+-define(memory, memory).
+-define(mod, mod).
+-define(no_distribution, no_distribution).
+-define(node, node).
+-define(not_connected, not_connected).
+-define(num_atoms, num_atoms).
+-define(old_instr_data, old_instr_data).
+-define(port, port).
+-define(proc, proc).
+-define(proc_dictionary, proc_dictionary).
+-define(proc_heap, proc_heap).
+-define(proc_messages, proc_messages).
+-define(proc_stack, proc_stack).
+-define(timer, timer).
+-define(visible_node, visible_node).
+

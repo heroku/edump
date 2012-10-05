@@ -1,0 +1,15 @@
+%% vim: set ft=erlang sw=2 et:
+{application, edump,
+ [
+  {description, "An Erlang crashdump analysis library"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []},
+  {modules, [edump_index,
+             edump_viewer,
+             edump_indexed_parser]}
+ ]}.
