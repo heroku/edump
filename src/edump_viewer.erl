@@ -120,7 +120,8 @@ parse_segment(Stream, Parser, Chunk, State0) ->
                     State1 = Parser(Stream, Parser, Incomplete, State0),
                     parse_segment(Stream, Parser, eof, State1);
                 More ->
-                    parse_segment(Stream, Parser, <<More, Chunk>>, State0)
+                    parse_segment(Stream, Parser,
+                                  <<More/binary, Chunk/binary>>, State0)
             end;
         [Line, Rest] ->
             State1 = Parser(split_line(Line), State0),
