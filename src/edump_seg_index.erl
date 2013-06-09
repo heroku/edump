@@ -17,7 +17,13 @@ new() ->
 to_list(#state{tags = Tags}) ->
     gb_sets:to_list(Tags).
 
+to_file(S = #state{}, File) ->
+    file:write_file(File,
+                    erlang:term_to_binary(S, [{compressed, 6}])).
 
+from_file(File) ->
+    {ok, Bin} = file:read_file(File),
+    erlang:binary_to_term(Bin).
 
 from_dump_file(FileName) ->
     from_dump_file(FileName, new()).
