@@ -17,13 +17,15 @@ new() ->
 to_list(#state{tags = Tags}) ->
     gb_sets:to_list(Tags).
 
-from_file(FileName) ->
-    from_file(FileName, new()).
 
-from_file(FileName, State) ->
-    from_stream([{stream, {file, FileName}}], State).
 
-from_stream(StreamOpts, State) ->
+from_dump_file(FileName) ->
+    from_dump_file(FileName, new()).
+
+from_dump_file(FileName, State) ->
+    from_dump_stream([{stream, {file, FileName}}], State).
+
+from_dump_stream(StreamOpts, State) ->
     {ok, Stream} = gen_stream:start_link(StreamOpts),
     read_block({incomplete_tag_start, 0}, Stream, 0, <<>>, State).
 
