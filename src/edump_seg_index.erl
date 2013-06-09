@@ -50,9 +50,12 @@ tag_names(#state{tags = Tags}) ->
 extract_tag_body(#tag{body_start = Start, body_len = Len},
                  FileName) ->
     {ok, File} = file:open(FileName, [binary, raw, read]),
-    {ok, Body} = file:pread(File, Start, Len),
+    {ok, Body} = tag_body_io_read(File, Start, Len),
     file:close(File),
     Body.
+
+tag_body_io_read(File, Start, Len) ->
+    file:pread(File, Start, Len).
 
 read_block({tag_start, BlockOffset, Tag},
            Stream, StreamOffset, Block, State) ->
