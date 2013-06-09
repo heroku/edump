@@ -39,6 +39,14 @@ find_tags(MS, #state{tags = Tags}) ->
     ets:match_spec_run(gb_sets:to_list(Tags),
                        ets:match_spec_compile(MS)).
 
+tag_names(#state{tags = Tags}) ->
+    Cnt = gb_sets:fold(fun (#tag{name=Name}, D) ->
+                               dict:update_counter(Name, 1, D)
+                       end,
+                       dict:new(),
+                       Tags),
+    dict:to_list(Cnt).
+
 extract_tag_body(#tag{body_start = Start, body_len = Len},
             FileName) ->
     {ok, File} = file:open(FileName, [binary, raw, read]),
