@@ -48,7 +48,7 @@ tag_names(#state{tags = Tags}) ->
     dict:to_list(Cnt).
 
 extract_tag_body(#tag{body_start = Start, body_len = Len},
-            FileName) ->
+                 FileName) ->
     {ok, File} = file:open(FileName, [binary, raw, read]),
     {ok, Body} = file:pread(File, Start, Len),
     file:close(File),
